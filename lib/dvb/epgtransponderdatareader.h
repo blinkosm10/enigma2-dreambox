@@ -6,7 +6,6 @@
 /* Time to wait after tuning in before EPG data capturing starts */
 #define ZAP_DELAY 200        // 2 sec
 
-#endif
 
 #include <tr1/unordered_map>
 
