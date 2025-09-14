@@ -634,7 +634,16 @@ void eEPGCache::sectionRead(const uint8_t *data, int source, eEPGChannelData *ch
 				eit_event->event_id_hi = event_hash >> 8;
 				eit_event->event_id_lo = event_hash & 0xFF;
 			}
+eventData *new_evt = new eventData(eit_event, eit_event_size, source, (tsid<<16)|onid);
+			time_t new_start = new_evt->getStartTime();
+			time_t new_end = new_start + new_evt->getDuration();
 
+			// Ignore zero-length events
+			if (new_start == new_end)
+			{
+				delete new_evt;
+				goto next;
+			}
 			// search in eventmap
 			eventMap::iterator ev_it =
 				servicemap.byEvent.find(event_id);
