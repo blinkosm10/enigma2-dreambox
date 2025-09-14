@@ -207,6 +207,8 @@ eDVBService &eDVBService::operator=(const eDVBService &s)
 	m_service_name_sort = s.m_service_name_sort;
 	m_provider_name = s.m_provider_name;
 	m_provider_display_name = s.m_provider_display_name;
+	m_default_authority = s.m_default_authority;
+	m_aus_da_flag = s.m_aus_da_flag;
 	m_flags = s.m_flags;
 	m_ca = s.m_ca;
 	copyCache(s.m_cache);
